@@ -1,0 +1,25 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 0;
+}    
+
+.grid {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    /* border: 1px solid black; */
+    box-shadow: black 0px 0px 20px;
+    
+
+}
+
+.cell {
+    box-shadow: black 0px 0px 1px;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+}
