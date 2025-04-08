@@ -1,5 +1,6 @@
 
 const grid = document.querySelector('#grid');
+const btnCustom = document.querySelector('#btn-custom');
 const btn16 = document.querySelector('#btn-16');
 const btn32 = document.querySelector('#btn-32');
 const btn64 = document.querySelector('#btn-64');
@@ -19,8 +20,12 @@ function createGrid(gridSize = 100) {
 
 }
 
-document.body.onload = createGrid();
+function customGrid() {
+    const input = parseInt(prompt('Enter a number of cells per side'))
+}
 
+document.body.onload = createGrid();
+btnCustom.addEventListener('click', customGrid);
 btn16.addEventListener('click', () => createGrid(16));
 btn32.addEventListener('click', () => createGrid(32));
 btn64.addEventListener('click', () => createGrid(64));
