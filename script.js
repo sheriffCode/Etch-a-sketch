@@ -3,14 +3,21 @@ const btnCustom = document.querySelector("#btn-custom");
 const btn16 = document.querySelector("#btn-16");
 const btn32 = document.querySelector("#btn-32");
 const btn64 = document.querySelector("#btn-64");
-const btn100 = document.querySelector("#btn-100");
-const btnShader = document.querySelector("#btn-shader");
 const btnRandom = document.querySelector("#btn-random");
-let color = document.querySelector("#color");
+const color = document.querySelector("#color");
+
 let currentGridSize = 16;
 let randomColor = false;
-let shader = false;
-// let shadeOpacity = 1;
+
+const randomColors = [
+	"red",
+	"orange",
+	"yellow",
+	"green",
+	"blue",
+	"indigo",
+	"violet",
+];
 
 function createGrid(gridSize = currentGridSize) {
 	grid.innerHTML = "";
@@ -49,7 +56,10 @@ function customGrid() {
 }
 
 function draw() {
-	if (shader) {
+	if (randomColor) {
+		const randomNum = Math.floor(Math.random() * 7);
+		this.style.backgroundColor = randomColors[randomNum];
+		console.log(randomNum);
 		return;
 	}
 	this.style.backgroundColor = color.value;
@@ -62,25 +72,13 @@ function selectCells() {
 	});
 }
 
-function drawShader() {
-	console.log(this.style.backgroundColor);
-}
-
-function setShader() {
-	shader = true;
-	randomColor = false;
-	createGrid();
-	let cells = document.querySelectorAll(".cell");
-	cells.forEach((cell) => {
-		cell.addEventListener("mouseover", drawShader);
-	});
-}
-
 document.body.onload = createGrid();
 btnCustom.addEventListener("click", customGrid);
 btn16.addEventListener("click", () => createGrid(16));
 btn32.addEventListener("click", () => createGrid(32));
 btn64.addEventListener("click", () => createGrid(64));
-btn100.addEventListener("click", () => createGrid(100));
-color.addEventListener("change", (e) => e.target.value);
-btnShader.addEventListener("click", setShader);
+btnRandom.addEventListener("click", () => (randomColor = true));
+color.addEventListener("change", (e) => {
+	randomColor = false;
+	e.target.value;
+});
